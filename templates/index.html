@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="bg-BG">
+
+{% include "head.html" %}
+{% include "header.html" %}
+
+<body style="background-color: floralwhite;">
+
+  <main>
+    <div class="container" id="about">
+      {% include "about.html" %}
+    </div>
+    <div class="container-fluid" id="my_work">
+    {% include "mywork.html" %}
+    </div>
+  </main>
+
+  <div class="container" id="footer">
+  {% include "footer.html" %}
+  </div>
+
+  <div class="dotted-scrollspy clearfix d-none d-sm-block">
+    <ul class="nav smooth-scroll flex-column">
+      <li class="nav-item"><a class="nav-link" href="#about"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#my_work"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#footer"><span></span></a></li>
+    </ul>
+  </div>
+
+  {% include "scripts.html" %}
+</body>
+
+</html>
