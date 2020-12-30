@@ -1,14 +1,14 @@
 name: Lint
 
 # Run this workflow every time a new commit pushed to your repository
-on: push
+on: [ push, pull_request ]
 
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
   super-lint:
     # Name the Job
-    name: Lint code base
+    name: Lint python code base
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -16,13 +16,18 @@ jobs:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python3 -m venv venv
+          . venv/bin/activate
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pylint
 
       # Lint code
-      - name: Lint Python Code
-        uses: sunnysid3up/python-linter@v0.1-beta.7
-        with:
-          # Source file or directory
-          source: .
-          # Set strictness for lint [low, medium, high]
-          strict: medium
-          django: true
+      - name: Use Pylint
+        run: |
+          . venv/bin/activate
+          pylint --errors-only website vesela
