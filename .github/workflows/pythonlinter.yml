@@ -1,4 +1,4 @@
-name: Super-Linter
+name: Lint
 
 # Run this workflow every time a new commit pushed to your repository
 on: push
@@ -17,9 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Runs the Super-Linter action
-      - name: Run Super-Linter
-        uses: github/super-linter@v3
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Lint code
+      - name: Lint Python Code
+        uses: sunnysid3up/python-linter@v0.1-beta.7
+        with:
+          # Source file or directory
+          source: .
+          # Set strictness for lint [low, medium, high]
+          strict: medium
+          django: true
