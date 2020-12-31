@@ -26,7 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
-# SECRET_KEY = 'py8%bw8fspf443g!!dewqj_k6o@-1y#1_ijhg4!@cxv12_02c!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -34,7 +33,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['sladkarnichka.herokuapp.com', '127.0.0.1']
 
 # Application definition
-
 INSTALLED_APPS = [
 	'django.contrib.admin',
 	'django.contrib.auth',
